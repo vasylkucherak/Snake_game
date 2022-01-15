@@ -5,7 +5,7 @@ html, body {
 
 body {
     background: #ddd;
-    padding: 50px;
+    padding: 30px;
 }
 
 * {
@@ -16,9 +16,4 @@ canvas {
     background: black;
     margin: 0 auto;
     display: block;
-}
-
-#area {
-    width: 1280;
-    height: 720;
 }
