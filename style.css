@@ -1,0 +1,24 @@
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background: #ddd;
+    padding: 50px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+canvas {
+    background: black;
+    margin: 0 auto;
+    display: block;
+}
+
+#area {
+    width: 1280;
+    height: 720;
+}
