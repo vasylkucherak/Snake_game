@@ -66,6 +66,7 @@ function loop() {
             && py < (trail[i].y + ph) && py + ph > trail[i].y) {
                 tail = 10;
                 speed = baseSpeed;
+                score = 0;
 
                 for (let t = 0; t < trail.length; t++) {
                     trail[t].color = 'red';
@@ -91,6 +92,8 @@ function loop() {
             tail += 10;
             speed += .1;
             spawnApple();
+            score++;
+            console.log(score);
             break;
         }
     }
@@ -132,7 +135,7 @@ function rc() {
 }
 
 function changeDirection(event) {
-    if (!fkp && [37,38,39,40].indexOf(event.keyCode) > -1) {
+    if (!fkp && [37, 38, 39, 40, 65, 68, 83, 87].indexOf(event.keyCode) > -1) {
         setTimeout(function() {
             gs = true;
         }, 1000);
@@ -145,22 +148,22 @@ function changeDirection(event) {
         return false;
     }
 
-    if (event.keyCode == 37 && !(xv > 0)) {  // left arrow or key "A"
+    if ((event.keyCode == 37 || event.keyCode == 65) && !(xv > 0)) {  // left arrow or key "A"
         xv = -speed;
         yv = 0;
     }
 
-    if (event.keyCode == 38 && !(yv > 0)) {  // top arrow or key "W"
+    if ((event.keyCode == 38 || event.keyCode == 87) && !(yv > 0)) {  // top arrow or key "W"
         xv = 0;
         yv = -speed;
     }
 
-    if (event.keyCode == 39 && !(xv > 0)) {  // right arrow or key "D"
+    if ((event.keyCode == 39 || event.keyCode == 68) && !(xv > 0)) {  // right arrow or key "D"
         xv = speed;
         yv = 0;
     }
 
-    if (event.keyCode == 40 && !(yv > 0)) {  // down arrow or key "S"
+    if ((event.keyCode == 40 || event.keyCode == 83) && !(yv > 0)) {  // down arrow or key "S"
         xv = 0;
         yv = speed;
     }
