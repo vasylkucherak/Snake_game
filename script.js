@@ -7,6 +7,9 @@ const scoreCounter = document.querySelector('#score__now'),
       lastScoreCounter = document.querySelector('#score__last'),
       HIScoresCounter = document.querySelector('#score__hi');
 
+lastScoreCounter.innerHTML = `last score: ${localStorage.getItem('last_score')}`;
+HIScoresCounter.innerHTML = `HI scores: ${localStorage.getItem('HI_scores')}`;
+
 let canv = document.getElementById('area'),
     ctx = canv.getContext('2d'),
     gs = fkp = false,
@@ -48,7 +51,7 @@ function loop() {
         py = 0;
     }
 
-    ctx.fillStyle = 'lime';
+    ctx.fillStyle = 'green';
     for (let i = 0; i < trail.length; i++) {
         ctx.fillStyle = trail[i].color || 'lime';
         ctx.fillRect(trail[i].x, trail[i].y, pw, ph);
@@ -74,8 +77,8 @@ function loop() {
                 speed = baseSpeed;
                 score = 0;
                 scoreCounter.innerHTML = `score: ${score}`;
-                lastScoreCounter.innerHTML = `last score: ${lastScore}`;
-                HIScoresCounter.innerHTML = `HI scores: ${HIScores}`;
+                lastScoreCounter.innerHTML = `last score: ${localStorage.getItem('last_score')}`;
+                HIScoresCounter.innerHTML = `HI scores: ${localStorage.getItem('HI_scores')}`;
 
                 for (let t = 0; t < trail.length; t++) {
                     trail[t].color = 'red';
@@ -103,9 +106,11 @@ function loop() {
             spawnApple();
             score++;
             lastScore = score;
+            localStorage.setItem('last_score', lastScore);
             scoreCounter.innerHTML = `score: ${score}`;
-            if (score > HIScores) {
+            if (score > localStorage.getItem('HI_scores')) {
                 HIScores = score;
+                localStorage.setItem('HI_scores', HIScores);
             }
             break;
         }
