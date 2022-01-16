@@ -17,3 +17,21 @@ canvas {
     margin: 0 auto;
     display: block;
 }
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+span {
+    margin-top: 0px;
+    font-size: 30px;
+    font-weight: 200;
+    height: 28px;
+    width: 200px;
+}
+
+#score__now {
+    width: 150px;
+    margin-left: 70px;
+}

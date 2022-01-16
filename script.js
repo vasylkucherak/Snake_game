@@ -3,6 +3,10 @@ window.onload = function() {
     setInterval(loop, 1000/60);
 }
 
+const scoreCounter = document.querySelector('#score__now'),
+      lastScoreCounter = document.querySelector('#score__last'),
+      HIScoresCounter = document.querySelector('#score__hi');
+
 let canv = document.getElementById('area'),
     ctx = canv.getContext('2d'),
     gs = fkp = false,
@@ -17,7 +21,9 @@ let canv = document.getElementById('area'),
     tail = 100,
     tailSafeZone = 20,
     cooldown = false,
-    score = 0;
+    score = 0,
+    lastScore = 0,
+    HIScores = 0;
 
 function loop() {
     ctx.fillStyle = 'black';
@@ -67,6 +73,9 @@ function loop() {
                 tail = 10;
                 speed = baseSpeed;
                 score = 0;
+                scoreCounter.innerHTML = `score: ${score}`;
+                lastScoreCounter.innerHTML = `last score: ${lastScore}`;
+                HIScoresCounter.innerHTML = `HI scores: ${HIScores}`;
 
                 for (let t = 0; t < trail.length; t++) {
                     trail[t].color = 'red';
@@ -93,7 +102,11 @@ function loop() {
             speed += .1;
             spawnApple();
             score++;
-            console.log(score);
+            lastScore = score;
+            scoreCounter.innerHTML = `score: ${score}`;
+            if (score > HIScores) {
+                HIScores = score;
+            }
             break;
         }
     }
