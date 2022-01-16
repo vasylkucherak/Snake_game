@@ -3,6 +3,10 @@ window.onload = function() {
     setInterval(loop, 1000/60);
 }
 
+let audioLose = new Audio('audio/snake_lose.mp3');
+let audioMove = new Audio('audio/snake_move.mp3');
+let audioEat = new Audio('audio/apple_eating.mp3');
+
 const scoreCounter = document.querySelector('#score__now'),
       lastScoreCounter = document.querySelector('#score__last'),
       HIScoresCounter = document.querySelector('#score__hi');
@@ -73,6 +77,7 @@ function loop() {
 
             if (px < (trail[i].x + pw) && px + pw > trail[i].x
             && py < (trail[i].y + ph) && py + ph > trail[i].y) {
+                audioLose.play();
                 tail = 10;
                 speed = baseSpeed;
                 score = 0;
@@ -97,13 +102,13 @@ function loop() {
     }
 
     for (let a = 0; a < apples.length; a++) {
-
         if (px < (apples[a].x + pw) && px + pw > apples[a].x 
         && py < (apples[a].y + ph) && py + ph > apples[a].y) {
             apples.splice(a, 1);
             tail += 10;
             speed += .1;
             spawnApple();
+            audioEat.play();
             score++;
             lastScore = score;
             localStorage.setItem('last_score', lastScore);
@@ -169,21 +174,25 @@ function changeDirection(event) {
     if ((event.keyCode == 37 || event.keyCode == 65) && !(xv > 0)) {  // left arrow or key "A"
         xv = -speed;
         yv = 0;
+        audioMove.play();
     }
 
     if ((event.keyCode == 38 || event.keyCode == 87) && !(yv > 0)) {  // top arrow or key "W"
         xv = 0;
         yv = -speed;
+        audioMove.play();
     }
 
     if ((event.keyCode == 39 || event.keyCode == 68) && !(xv > 0)) {  // right arrow or key "D"
         xv = speed;
         yv = 0;
+        audioMove.play();
     }
 
     if ((event.keyCode == 40 || event.keyCode == 83) && !(yv > 0)) {  // down arrow or key "S"
         xv = 0;
         yv = speed;
+        audioMove.play();
     }
 
     cooldown = true;
