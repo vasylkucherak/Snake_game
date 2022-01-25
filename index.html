@@ -5,14 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snake game</title>
+    <link rel="icon" href="img/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <canvas id="area" width="1280" height="680"></canvas>
+    <canvas id="area" width="1280" height="550"></canvas>
     <div class="container">
         <span id="score__now">score: 0</span>
         <span id="score__last">last score: 0</span>
         <span id="score__hi">HI scores: 0</span>
+    </div>
+
+    <div class="controller">
+        <div class="side_l">
+            <div class="btns_left"></div>
+        </div>
+        <div class="center"></div>
+        <div class="center"></div>
+        <div class="side_r">
+            <div class="btns_right"></div>
+        </div>
     </div>
     <script src="script.js"></script>
     <!-- <audio src="audio/snake_theme.mp3" autoplay="autoplay"></audio> -->

@@ -6,6 +6,7 @@ html, body {
 body {
     background: #ddd;
     padding: 30px;
+    position: relative;
 }
 
 * {
@@ -20,13 +21,17 @@ canvas {
 
 .container {
     display: flex;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
     justify-content: space-between;
 }
 
 span {
     margin-top: 0px;
     font-size: 30px;
-    font-weight: 200;
+    font-weight: 400;
     height: 28px;
     width: 200px;
 }
@@ -34,4 +39,92 @@ span {
 #score__now {
     width: 150px;
     margin-left: 70px;
+}
+
+.controller {
+    margin-top: 33px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 150px;
+}
+
+.center {
+    width: 60px;
+    height: 30px;
+    background-color: black;
+}
+
+.side_l {
+    width: 150px;
+    height: 100%;
+    background: url(img/pngwing.com.png) center center/cover no-repeat;
+}
+
+.side_r {
+    width: 126px;
+    height: 126px;
+    background: url(img/colored_button.jpg) center center/cover no-repeat;
+}
+
+.btns_left, .btns_right {
+    display: none;
+    position: absolute;
+    height: 36px;
+    width: 36px;
+    border-radius: 100%;
+    background-color: rgba(0, 256, 0, .5);
+    border: 1px solid black;
+}
+
+.btn_left_t {
+    display: block;
+    top: 13px;
+    left: 107px;
+}
+
+.btn_left_b {
+    display: block;
+    top: 101px;
+    left: 107px;
+}
+
+.btn_left_l {
+    display: block;
+    top: 57px;
+    left: 63px;
+}
+
+.btn_left_r {
+    display: block;
+    top: 57px;
+    left: 151px;
+}
+
+.btn_right_t {
+    display: block;
+    top: 17px;
+    right: 96px;
+}
+
+.btn_right_b {
+    display: block;
+    top: 95px;
+    right: 96px;
+}
+
+.btn_right_l {
+    display: block;
+    top: 56px;
+    right: 135px;
+}
+
+.btn_right_r {
+    display: block;
+    top: 56px;
+    right: 57px;
 }
